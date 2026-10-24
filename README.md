@@ -5,7 +5,6 @@ Quoteblaze is a multi-tenant, AI-assisted quoting web application for small grou
 - [Quoteblaze](#quoteblaze)
   - [Features](#features)
   - [Tech stack](#tech-stack)
-  - [Model choice](#model-choice)
   - [Project Structure](#project-structure)
   - [Working](#working)
   - [Development](#development)
@@ -40,16 +39,9 @@ Quoteblaze is a multi-tenant, AI-assisted quoting web application for small grou
 - **ORM**: Drizzle ORM
 - **Database**: PostgreSQL
 - **AI**: OpenRouter
-- **Validation**: Zod
-- **Testing**: Vitest for unit/domain/integration tests, Playwright in `packages/e2e-tests`
-- **Tooling**: pnpm, Turborepo, Biome, Docker, Docker Compose
+- **Testing**: Vitest for unit and integration tests, Playwright for E2E tests
+- **Tooling**: pnpm, Turborepo, Biome, Zod, Docker, Docker Compose
 - **Deployment**: [Vercel](https://vercel.com) (Web) and [Neon](https://neon.com) (Database)
-
-## Model choice
-
-Each company supplies its own **OpenRouter API key** in Settings. The selected model is a company-level setting, not a deployment constant. The default is `openrouter/free` for convenience, but administrators can enter any valid OpenRouter text chat model ID (for example `anthropic/claude-sonnet-4`, `openai/gpt-4o`, or a supported `:free` variant), or search the OpenRouter model catalogue in Settings and select one. The exact model ID is validated by sending a small connection-test prompt before saving. Availability, provider support, cost, output quality, and rate limits vary by model.
-
-The model catalogue proxy uses the current company's OpenRouter key and returns only model metadata needed by the UI. A newly entered key is used ephemerally for catalogue search and is not stored unless Save succeeds. Existing companies can change the model while leaving the key field blank. Keys are encrypted at rest and never returned to the browser after saving. Use an **OpenRouter API key**, not a direct Anthropic/OpenAI provider key. See [OpenRouter's chat completions API](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request?explorer=true) and [model catalogue API](https://openrouter.ai/docs/api/api-reference/models/get-models).
 
 ## Project Structure
 
@@ -105,9 +97,9 @@ Database table definitions belong in the database schema file; Drizzle relation 
     The demo seed creates two separate companies. Each account has access only to its own company’s data. The server derives company scope from the authenticated membership rather than trusting a company ID supplied by the browser.
 
 2. **Configure the company's AI model**  
-    An owner or administrator opens *Settings → AI configuration*, enters that company’s OpenRouter API key, and chooses a model. They may search the OpenRouter catalogue or enter an exact model ID, then test the configuration before saving. The key is encrypted at rest using AES-256-GCM and is never returned to the browser after it has been saved.
+    An owner or administrator opens *Settings → AI configuration*, enters that company’s **OpenRouter API key**, and chooses a model. Each company supplies its own **OpenRouter API key** in Settings. The selected model is a company-level setting, not a deployment constant. The default is `openrouter/free` for convenience, but administrators can enter any valid OpenRouter text chat model ID (for example `anthropic/claude-sonnet-4`, `openai/gpt-4o`, or a supported `:free` variant), or search the OpenRouter model catalogue in Settings and select one. The exact model ID is validated by sending a small connection-test prompt before saving. Model availability, price, rate limits, and feature support depend on the selected model and provider.
 
-    Use an OpenRouter API key, not a direct Anthropic or OpenAI provider key. The `OPENROUTER_DEFAULT_MODEL` environment variable is only a fallback, the model selected in company settings takes precedence. Model availability, price, rate limits, and feature support depend on the selected model and provider.
+    Use an **OpenRouter API key**, not a direct Anthropic or OpenAI provider key. The `OPENROUTER_DEFAULT_MODEL` environment variable is only a fallback, the model selected in company settings takes precedence. A newly entered key is used ephemerally for catalogue search and is not stored unless Save succeeds. The key is encrypted at rest using AES-256-GCM and is never returned to the browser after it has been saved. See [OpenRouter's chat completions API](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request?explorer=true) and [model catalogue API](https://openrouter.ai/docs/api/api-reference/models/get-models).
 
 3. **Paste an enquiry and review the analysis**  
     Paste the customer’s email into the Enquiries workflow. Quoteblaze stores the original text and asks the configured model to return structured job information, including candidate rate codes, quantities, uncertainties, and scope details. The model's response is validated against the shared schema. Email text is treated as untrusted content; embedded instructions cannot change company settings, rates, discounts, or approval state.
