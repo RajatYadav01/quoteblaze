@@ -1,7 +1,7 @@
 {
 	"extends": "@quoteblaze/tsconfig/nodejs.json",
 	"compilerOptions": {
-		"rootDir": "./",
+		"rootDir": ".",
 		"outDir": "./dist"
 	},
 	"include": ["src", "test", "drizzle.config.ts"],

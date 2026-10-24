@@ -259,8 +259,8 @@ export function EnquiryWorkbench() {
 										</tr>
 									</thead>
 									<tbody>
-										{analysis.workItems.map((item, i) => (
-											<tr key={`${item.candidateRateCode}-${i}`}>
+										{analysis.workItems.map((item) => (
+											<tr key={`${item.candidateRateCode ?? "unmatched"}-${item.description}`}>
 												<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
 													{item.description}
 													{item.warnings.length > 0 && (
@@ -355,8 +355,8 @@ export function EnquiryWorkbench() {
 									</tr>
 								</thead>
 								<tbody>
-									{quote.lineItems.map((line, i) => (
-										<tr key={`${line.rateCode}-${i}`}>
+									{quote.lineItems.map((line) => (
+										<tr key={`${line.rateCode ?? "unmatched"}-${line.description}`}>
 											<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
 												<strong>{line.rateCode ?? "Unpriced"}</strong> — {line.description}
 												<div className="text-xs text-muted">

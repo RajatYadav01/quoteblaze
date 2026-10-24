@@ -306,7 +306,7 @@ export function QuoteReview({
 						</thead>
 						<tbody>
 							{items.map((item, index) => (
-								<tr className={item.excluded ? "opacity-60" : ""} key={`${item.rateCode ?? "unpriced"}-${index}`}>
+								<tr className={item.excluded ? "opacity-60" : ""} key={`${item.rateCode ?? "unpriced"}-${item.rateId}`}>
 									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
 										<label>
 											<input
@@ -358,7 +358,7 @@ export function QuoteReview({
 									</td>
 									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
 										<input
-											className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-[90px]"
+											className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-22.5"
 											type="number"
 											min="0.001"
 											step="0.001"

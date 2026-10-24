@@ -13,7 +13,8 @@ type Rate = {
 	sourceNotes: string | null;
 	reviewNotes: string | null;
 };
-const money = (n: string | null) =>
+
+const _money = (n: string | null) =>
 	n === null ? "TBC" : new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(Number(n));
 
 export function RateCatalogManager({ initialRates }: { initialRates: Rate[] }) {

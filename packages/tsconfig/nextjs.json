@@ -5,6 +5,7 @@
 		"allowJs": true,
 		"jsx": "react-jsx",
 		"incremental": true,
+		"allowImportingTsExtensions": true,
 		"plugins": [
 			{
 				"name": "next"
