@@ -1,0 +1,81 @@
+# Node / pnpm
+node_modules/
+.pnpm
+.pnpm-store
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# pnpm workspaces symlinks
+**/.pnpm-debug.log
+**/node_modules
+
+# Dependencies / output
+dist/
+build/
+coverage/
+.vitest/
+*.tsbuildinfo
+
+# TypeScript incremental build files
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Environment files
+.env*
+!.env.example
+
+# Editor / OS files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+.idea/
+*.swp
+
+# Turborepo
+turbo/
+.turbo/
+
+# Husky
+.husky/**/_
+.husky/*-sample
+
+# Lint-staged / Prettier
+*.orig
+*.rej
+
+# ESLint
+**/lint-report.json
+
+# Cache directories
+.cache/
+.eslintcache
+.tmp/
+temp/
+tmp/
+
+# VSCode extension cache
+.vscode/
+**/.vscode/
+
+# Playwright
+/packages/e2e-tests/test-results/
+/packages/e2e-tests/playwright-report/
+/packages/e2e-tests/blob-report/
+/packages/e2e-tests/playwright/.cache/
+/packages/e2e-tests/playwright/.auth/
+
+# Misc
+*.local
+*.pid
+*.seed
+*.tgz

@@ -1,0 +1,50 @@
+{
+	"name": "@quoteblaze/web",
+	"version": "0.1.0",
+	"private": true,
+	"license": "BSD-3-Clause",
+	"type": "module",
+	"scripts": {
+		"format": "biome format --write",
+		"lint": "biome lint",
+		"typecheck": "tsc -p tsconfig.json --noEmit",
+		"test": "vitest",
+		"test:unit": "vitest run unit.test.ts --passWithNoTests",
+		"test:integration": "vitest run integration.test.ts --passWithNoTests",
+		"test:ui": "vitest --ui",
+		"test:run": "vitest run",
+		"test:coverage": "vitest run --coverage",
+		"test:watch": "vitest --watch",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"@quoteblaze/constants": "workspace:*",
+		"@quoteblaze/database": "workspace:*",
+		"@quoteblaze/pricing-engine": "workspace:*",
+		"@quoteblaze/schemas": "workspace:*",
+		"@quoteblaze/types": "workspace:*",
+		"bcryptjs": "^3.0.3",
+		"csv-parse": "^7.0.3",
+		"drizzle-orm": "^1.0.0-rc.5",
+		"dotenv": "^18.0.8",
+		"jose": "^6.2.12",
+		"next": "^16.3.5",
+		"postgres": "^3.4.9",
+		"server-only": "^0.0.1",
+		"react": "^19.2.8",
+		"react-dom": "^19.2.8",
+		"zod": "^4.6.5"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.14",
+		"@quoteblaze/tsconfig": "workspace:*",
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"babel-plugin-react-compiler": "1.0.0",
+		"tailwindcss": "^4"
+	}
+}

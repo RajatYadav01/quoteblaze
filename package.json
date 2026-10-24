@@ -1,0 +1,51 @@
+{
+	"name": "quoteblaze",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+        "format": "turbo run format",
+		"lint": "turbo run lint",
+        "typecheck": "turbo run typecheck",
+		"test": "turbo run test",
+		"test:unit": "turbo run test:unit",
+		"test:integration": "turbo run test:integration",
+		"test:web": "turbo run test --filter=@quoteblaze/web",
+		"test:web:unit": "turbo run test:unit --filter=@quoteblaze/web",
+		"test:web:integration": "turbo run test:integration --filter=@quoteblaze/web",
+		"test:watch": "turbo run test:watch",
+		"test:coverage": "turbo run test:coverage",
+		"test:e2e": "pnpm --filter @quoteblaze/e2e-tests e2e",
+		"test:e2e:ui": "turbo run test:e2e -- --ui",
+		"db:generate": "pnpm --filter @quoteblaze/database db:generate",
+		"db:migrate": "pnpm --filter @quoteblaze/database db:migrate",
+		"db:seed": "pnpm --filter @quoteblaze/database db:seed",
+		"db:studio": "pnpm --filter @quoteblaze/database db:studio",
+		"dev": "turbo run dev --parallel",
+		"dev:web": "turbo run dev --filter=@quoteblaze/web -- --hostname 0.0.0.0",
+		"build": "turbo build",
+		"conflicts": "syncpack lint --dependency-types prod,dev",
+		"conflicts:fix": "syncpack fix --dependency-types prod,dev",
+		"prepare": "husky",
+		"lint-staged": "lint-staged",
+		"changeset:version": "pnpm changeset version",
+		"changeset:publish": "pnpm changeset publish"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.14",
+		"@playwright/test": "^1.55.0",
+		"@types/node": "^25.9.1",
+		"@types/react": "^19.1.13",
+		"@types/react-dom": "^19.1.9",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.0.5",
+		"syncpack": "^15.3.1",
+		"tsx": "^4.23.15",
+		"turbo": "^2.9.14",
+		"typescript": "^7.0.2",
+		"vitest": "^5.0.5"
+	},
+	"packageManager": "pnpm@12.5.1+sha512.e3f305bc784a2bc89f5ad3b6138889470fae8d2af5f36b61216ec91c2c3d64089775f9de38aac331044ea40f245cb0d5666392dfdf65824e1907ef6a2c62de5f",
+	"engines": {
+		"node": ">=22"
+	}
+}

@@ -1,0 +1,8 @@
+Name,Company,Email,Phone,Address,Notes
+Demo Customer,,customer@example.test,,"Cannock, Staffordshire","Fictional demo customer retained for smoke testing."
+Amelia Grant,,amelia.grant@example.test,07700 910201,"18 Willow Close, Cannock WS11 4QH","Front garden turf refresh; previous visit in 2025."
+Carl Benton,,carl.benton@example.test,07700 910202,"6 Ash Grove, Hednesford WS12 2AB","Fence replacement enquiry; confirm exact boundary and panel count."
+Millbrook Property Management,Millbrook Property Management Ltd,maintenance@millbrookpm.example,01543 555018,"Unit 3, Cannock Business Park, Cannock WS11 0XG","Recurring grounds maintenance; confirm site contact before scheduling."
+Priya Shah,,priya.shah@example.test,07700 910204,"22 Church Street, Rugeley WS15 2AB","Interested in low-maintenance planting and bark mulch."
+Oakridge Lettings Ltd,Oakridge Lettings Ltd,repairs@oakridgelettings.example,01543 555022,"High Street, Cannock WS11","Property maintenance customer; repairs inbox is the preferred contact."
+Cannock Community Garden,Cannock Community Garden,hello@cannockcommunitygarden.example,01543 555031,"Birch Terrace, Cannock WS11","Community garden; volunteer access may affect scheduling."

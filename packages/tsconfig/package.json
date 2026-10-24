@@ -1,0 +1,12 @@
+{
+	"name": "@quoteblaze/tsconfig",
+	"version": "0.0.0",
+	"private": true,
+	"license": "BSD-3-Clause",
+	"type": "module",
+	"exports": {
+		"./base.json": "./base.json",
+		"./nodejs.json": "./nodejs.json",
+		"./nextjs.json": "./nextjs.json"
+	}
+}

@@ -1,0 +1,41 @@
+Code,Item,Unit,Rate,Notes
+EX01,Excavate & cart away topsoil/grass,m2,14.50,up to 150mm deep
+EX02,Excavate to reduce levels,m3,48,machine dig
+EX03,Break out & remove tarmac,sqm,16,
+EX04,Break out concrete (up to 150 thick),m²,24.00,breaker hire incl
+EX05,Muck away 8 wheeler,load,295,approx 10m3 loose / 16t
+EX06,Muck away,per tonne,22,old - use per load
+EX07,Grab hire (muck away),load,260,
+SB01,Type 1 sub-base 150mm compacted,m2,18.40,
+SB02,Type 1 sub-base,tonne,38,
+SB03,Type 1 sub-base,tonne,41,new price from March
+SB04,Geotextile membrane,m2,2.10,
+BP01,Block paving supply & lay - Brett Omega or similar,m2,62,"charcoal or brindle, herringbone +£4"
+BP02,Block paving supply & lay,m2,58,old price
+BP03,Block paving lay only (customer supplies),m2,32,
+BP04,Kiln dried sand & compact,m2,1.80,usually included in BP01??
+KB01,Edging kerb 150x50 on concrete haunch,lin m,28,
+KB02,Edging kerb,m,26,
+KB03,Road kerb HB2 on concrete,lin m,46,
+KB04,Dropped kerb / vehicle crossover,each,TBC,council approved contractor only - we don't do these
+PT01,Indian sandstone patio supply & lay,m²,85,inc VAT
+PT02,Porcelain patio supply & lay 20mm,m2,96,
+PT03,Patio lay only,m2,38,
+TM01,Tarmac driveway 2 coat (binder + 6mm surface),m2,55,
+TM02,Tarmac overlay 40mm,m2,32,existing base must be sound
+TM03,Resin bound 18mm,m2,TBC,"supplier keeps changing price, ask Dave"
+CO01,Concrete slab C25 100mm,m2,44,
+CO02,Concrete C30 ready mix,m3,"£1,250",think this is per load not per m3??
+DR01,Linear channel drain (ACO or similar),lin m,68,
+DR02,Gully & connection to existing,each,385,
+DR03,Soakaway (1m3 crate),each,620,subject to perc test
+DR04,CCTV drain survey,each,195,
+LB01,2 man gang + mini digger,day,640,
+LB02,3 man gang + 5t digger,day,890,
+LB03,Labourer,day,180,
+PL01,Skip 8 yard,each,310,"needs permit if on road, +£60"
+PL02,Site setup / welfare,job,150,
+MI01,Minimum charge any job,job,450,
+MI02,Weed membrane,m2,1.50,same as SB04?
+MI03,Topsoil supply & spread 100mm,m2,9,
+MI04,Turf supply & lay,m2,12.50,

@@ -1,0 +1,27 @@
+{
+	"name": "@quoteblaze/pricing-engine",
+	"version": "0.0.0",
+	"private": true,
+	"license": "BSD-3-Clause",
+	"type": "module",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"format": "biome format --write",
+		"lint": "biome lint",
+		"typecheck": "tsc -p tsconfig.json --noEmit",
+		"test": "vitest run",
+		"build:types": "tsc -b",
+		"clean": "rm -rf dist"
+	},
+	"dependencies": {
+		"@quoteblaze/constants": "workspace:*",
+		"@quoteblaze/types": "workspace:*"
+	},
+	"devDependencies": {
+		"@quoteblaze/tsconfig": "workspace:*"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"name": "@quoteblaze/database",
+	"version": "0.0.0",
+	"private": true,
+	"license": "BSD-3-Clause",
+	"type": "module",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"exports": {
+		".": "./src/index.ts",
+		"./schema": "./src/db/schema.ts",
+        "./relations": "./src/db/relations.ts"
+	},
+	"scripts": {
+		"format": "biome format --write",
+		"lint": "biome lint",
+		"typecheck": "tsc -p tsconfig.json --noEmit",
+		"test": "vitest run",
+		"build:types": "tsc -b",
+		"clean": "rm -rf dist",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "tsx src/migrate.ts",
+		"db:seed": "tsx src/seed.ts",
+		"db:studio": "drizzle-kit studio"
+	},
+	"dependencies": {
+		"@quoteblaze/constants": "workspace:*",
+		"bcryptjs": "^3.0.3",
+		"csv-parse": "^7.0.3",
+		"dotenv": "^18.0.8",
+		"drizzle-orm": "^1.0.0-rc.5",
+		"postgres": "^3.4.9"
+	},
+	"devDependencies": {
+		"@quoteblaze/tsconfig": "workspace:*",
+		"@types/pg": "^8.23.1",
+		"drizzle-kit": "1.0.0-rc.5"
+	}
+}

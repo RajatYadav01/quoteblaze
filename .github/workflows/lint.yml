@@ -1,0 +1,44 @@
+name: "Lint"
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      # Set up pnpm (version comes from package.json's "packageManager")
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
+      # Set up Node with pnpm cache
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      # Install all dependencies (frozen lockfile ensures exact versions)
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Run lint for all apps in parallel
+      - name: Lint all apps
+        run: pnpm lint
+
+      # Generate lint report in JSON
+      - name: Generate lint report
+        run: pnpm lint:report
+
+      # Upload lint report as artifact
+      - name: Upload lint report
+        uses: actions/upload-artifact@v7
+        with:
+          name: lint-report-${{ github.run_id }}
+          path: |
+            apps/**/lint-report.json

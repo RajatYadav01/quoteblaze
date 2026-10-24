@@ -1,0 +1,82 @@
+name: E2E Tests
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: false
+        type: string
+        default: "24"
+      working-directory:
+        required: false
+        type: string
+        default: "packages/e2e-tests"
+      start-worker:
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  e2e-tests:
+    name: Playwright E2E
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    env:
+      DATABASE_URL: postgres://postgres:password@localhost:5432/test_db
+      APP_URL: http://localhost:3000
+      AUTH_SECRET: ci-only-test-secret
+      APP_ENCRYPTION_KEY: ${{ secrets.CI_APP_ENCRYPTION_KEY }}
+
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: test_db
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: pnpm
+
+      # Install all dependencies for the monorepo once at the root for caching
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm --filter "@quoteblaze/e2e-tests" exec playwright install --with-deps
+
+      - name: Apply database migrations
+        run: pnpm db:migrate
+
+      - name: Seed demo data
+        run: pnpm db:seed
+
+      - name: Run Playwright tests
+        run: pnpm test:e2e
+
+      # Upload Playwright report
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report-${{ github.run_id }}
+          path: ${{ inputs.working-directory }}/playwright-report/
+          retention-days: 30

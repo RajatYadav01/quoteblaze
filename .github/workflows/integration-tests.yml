@@ -1,0 +1,51 @@
+name: "Integration Tests"
+
+on:
+  workflow_call:
+
+env:
+  DATABASE_URL: postgres://postgres:password@localhost:5432/test_db
+  APP_URL: http://localhost:3000
+  AUTH_SECRET: ci-only-test-secret
+  APP_ENCRYPTION_KEY: ${{ secrets.CI_APP_ENCRYPTION_KEY }}
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: test_db
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm" # Caches node_modules automatically
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Apply database migrations
+        run: pnpm db:migrate
+
+      - name: Run Global Monorepo Integration Tests
+        run: pnpm test:integration

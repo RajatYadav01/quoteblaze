@@ -1,0 +1,48 @@
+services:
+  quoteblaze-database:
+    container_name: quoteblaze-database
+    image: postgres:18
+    environment:
+      - POSTGRES_DB=quoteblaze
+      - POSTGRES_USER=quoteblaze
+      - POSTGRES_PASSWORD=172115205
+    volumes:
+      - quoteblaze_db_data:/var/lib/postgresql
+    ports:
+      - "5440:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "quoteblaze"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - quoteblaze
+
+  quoteblaze-web:
+    container_name: quoteblaze-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    depends_on:
+      - quoteblaze-database
+    environment:
+      - DATABASE_URL=postgresql://quoteblaze:172115205@quoteblaze-database:5432/quoteblaze
+      - AUTH_SECRET=quoteblaze-secret-key-123456789
+      - APP_ENCRYPTION_KEY=quoteblaze-encryption-key-123456789
+      - APP_URL=http://localhost:3001
+      - OPENROUTER_DEFAULT_MODEL=openrouter/free
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules
+    networks:
+      - quoteblaze
+
+volumes:
+  quoteblaze_db_data:
+
+networks:
+  quoteblaze:
+    driver: bridge

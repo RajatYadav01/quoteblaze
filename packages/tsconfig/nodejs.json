@@ -1,0 +1,12 @@
+{
+	"extends": "./base.json",
+	"compilerOptions": {
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"noEmit": false,
+		"allowImportingTsExtensions": true,
+		"rewriteRelativeImportExtensions": true,
+		"allowJs": true,
+		"types": ["node"]
+	}
+}
