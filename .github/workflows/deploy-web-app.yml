@@ -65,6 +65,8 @@ jobs:
         run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
 
       - name: Build production artifacts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: vercel build --prod --token="$VERCEL_TOKEN"
 
       - name: Run production database migrations
@@ -76,7 +78,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           NODE_ENV: production
-          ALLOW_DEMO_SEED: "true"
+          ALLOW_DEMO_SEED: ${{ secrets.ALLOW_DEMO_SEED }}
         run: pnpm db:seed
 
       - name: Deploy production artifacts
