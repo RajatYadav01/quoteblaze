@@ -4,6 +4,10 @@
 		"build": { "dependsOn": ["^build"], "outputs": [".next/**", "!.next/cache/**", "dist/**"] },
 		"dev": { "cache": false, "persistent": true },
 		"lint": { "dependsOn": ["^lint"] },
+		"lint:report": {
+			"cache": true,
+			"outputs": ["lint-report.json"]
+		},
 		"typecheck": { "dependsOn": ["^typecheck"] },
 		"test": { "dependsOn": ["^build"], "outputs": ["coverage/**"] },
 		"db:generate": { "cache": false }

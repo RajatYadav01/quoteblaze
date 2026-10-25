@@ -7,6 +7,7 @@
 	"scripts": {
 		"format": "biome format --write",
 		"lint": "biome lint",
+		"lint:report": "biome lint . --reporter=json --reporter-file=lint-report.json || true",
 		"typecheck": "tsc -p tsconfig.json --noEmit",
 		"test": "vitest",
 		"test:unit": "vitest run unit.test.ts --passWithNoTests",

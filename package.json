@@ -3,9 +3,10 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
-        "format": "turbo run format",
+		"format": "turbo run format",
 		"lint": "turbo run lint",
-        "typecheck": "turbo run typecheck",
+		"lint:report": "turbo run lint:report",
+		"typecheck": "turbo run typecheck",
 		"test": "turbo run test",
 		"test:unit": "turbo run test:unit",
 		"test:integration": "turbo run test:integration",
