@@ -181,7 +181,7 @@ The migration creates the database schema. The seed script creates the demo comp
 pnpm dev:web
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open `http://localhost:3000` to access the web application.
 
 #### 6. Run checks and browser tests
 
@@ -219,4 +219,4 @@ Before the E2E tests run, ensure the local database has been migrated and seeded
    docker-compose up --build
    ```
 
-4. After all the containers have been started, open any browser and go to `http://localhost3001` to access the web application.
+4. After all the containers have been started, open any browser and go to `http://localhost:3001` to access the web application.
