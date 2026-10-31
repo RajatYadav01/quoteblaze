@@ -15,7 +15,8 @@ Quoteblaze is a multi-tenant, AI-assisted quoting web application for small grou
       - [3. Configure local environment variables](#3-configure-local-environment-variables)
       - [4. Start PostgreSQL, migrate, and seed](#4-start-postgresql-migrate-and-seed)
       - [5. Start the web application](#5-start-the-web-application)
-      - [6. Run checks and browser tests](#6-run-checks-and-browser-tests)
+      - [6. Sign in to the application using the given demo credentials](#6-sign-in-to-the-application-using-the-given-demo-credentials)
+      - [7. Run checks and browser tests](#7-run-checks-and-browser-tests)
       - [To run the project using Docker](#to-run-the-project-using-docker)
 
 ## Features
@@ -183,7 +184,17 @@ pnpm dev:web
 
 Open `http://localhost:3000` to access the web application.
 
-#### 6. Run checks and browser tests
+#### 6. Sign in to the application using the given demo credentials
+
+- Hollis Groundworks  
+  Email address: `dave@hollisgroundworks.example`  
+  Password: `HollisDemo!2026`
+
+- Greenfield Landscapes  
+  Email address: `gaz@greenfieldlandscapes.example`  
+  Password: `GreenfieldDemo!2026`
+
+#### 7. Run checks and browser tests
 
 Common commands:
 
