@@ -19,23 +19,54 @@ services:
     networks:
       - quoteblaze
 
-  quoteblaze-web:
-    container_name: quoteblaze-web
+  quoteblaze-db-init:
+    container_name: quoteblaze-db-init
+    image: quoteblaze-web:local
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+        - DATABASE_URL=postgresql://quoteblaze:172115205@quoteblaze-database:5432/quoteblaze
+    depends_on:
+      quoteblaze-database:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://quoteblaze:172115205@quoteblaze-database:5432/quoteblaze
+      ALLOW_DEMO_SEED: ${ALLOW_DEMO_SEED:-true}
+    volumes:
+      - /app/node_modules
+    command:
+      - sh
+      - -c
+      - pnpm db:migrate && pnpm db:seed
+    restart: "no"
+    networks:
+      - quoteblaze
+
+  quoteblaze-web:
+    container_name: quoteblaze-web
+    image: quoteblaze-web:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+        - DATABASE_URL=postgresql://quoteblaze:172115205@quoteblaze-database:5432/quoteblaze
     ports:
       - "3001:3000"
     depends_on:
-      - quoteblaze-database
+      quoteblaze-database:
+        condition: service_healthy
+      quoteblaze-db-init:
+        condition: service_completed_successfully
     environment:
-      - DATABASE_URL=postgresql://quoteblaze:172115205@quoteblaze-database:5432/quoteblaze
-      - AUTH_SECRET=quoteblaze-secret-key-123456789
-      - APP_ENCRYPTION_KEY=quoteblaze-encryption-key-123456789
-      - APP_URL=http://localhost:3001
-      - OPENROUTER_DEFAULT_MODEL=openrouter/free
+      DATABASE_URL: postgresql://quoteblaze:172115205@quoteblaze-database:5432/quoteblaze
+      AUTH_SECRET: ${AUTH_SECRET:?Set AUTH_SECRET in .env}
+      APP_ENCRYPTION_KEY: ${APP_ENCRYPTION_KEY:?Set APP_ENCRYPTION_KEY in .env}
+      APP_URL: ${APP_URL:-http://localhost:3001}
+      OPENROUTER_DEFAULT_MODEL: ${OPENROUTER_DEFAULT_MODEL:-openrouter/free}
     volumes:
-      - ./apps/web:/app
       - /app/node_modules
     networks:
       - quoteblaze

@@ -1,9 +1,17 @@
-node_modules
-.next
-.turbo
-.git
-.env
-.env.*
+# Ignore git directory.
+/.git/
+
+# Ignore editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 coverage
 playwright-report
 test-results

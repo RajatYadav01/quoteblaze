@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy the root and workspace manifests first. This lets Docker reuse the dependency
 # installation layer when application source changes but package manifests do not.
-COPY package.json pnpm-workspace.yaml turbo.json .npmrc* ./
+COPY package.json pnpm-workspace.yaml turbo.json ./
 COPY apps/web/package.json apps/web/package.json
 COPY packages/types/package.json packages/types/package.json
 COPY packages/schemas/package.json packages/schemas/package.json
@@ -27,11 +27,12 @@ COPY . .
 # Next.js can evaluate server modules during build. This placeholder DATABASE_URL is only
 # for build-time module analysis; do not use it for real queries or migrations. The build
 # does not migrate or seed the database. Supply the actual DATABASE_URL at runtime.
-ARG DATABASE_URL=postgres://quoteblaze:quoteblaze@localhost:5432/quoteblaze
+ARG DATABASE_URL
+ARG NODE_ENV
 RUN DATABASE_URL=${DATABASE_URL} pnpm --filter @quoteblaze/web build
 
 # The same image runs the production Next.js server. Runtime secrets/database settings
 # must be passed by the host (for example Vercel environment variables or docker run -e).
-ENV NODE_ENV=production
+ENV NODE_ENV=$NODE_ENV
 EXPOSE 3000
 CMD ["pnpm", "--filter", "@quoteblaze/web", "start"]
