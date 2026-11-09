@@ -19,8 +19,8 @@ services:
     networks:
       - quoteblaze
 
-  quoteblaze-db-init:
-    container_name: quoteblaze-db-init
+  quoteblaze-database-init:
+    container_name: quoteblaze-database-init
     image: quoteblaze-web:local
     build:
       context: .
@@ -58,7 +58,7 @@ services:
     depends_on:
       quoteblaze-database:
         condition: service_healthy
-      quoteblaze-db-init:
+      quoteblaze-database-init:
         condition: service_completed_successfully
     environment:
       DATABASE_URL: postgresql://quoteblaze:172115205@quoteblaze-database:5432/quoteblaze
