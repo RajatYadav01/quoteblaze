@@ -28,19 +28,19 @@ export default async function RatesPage() {
 				</div>
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-2 min-[1100px]:grid-cols-4 gap-4 mb-4.5">
-				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="text-[0.82rem] text-muted">Total rows</div>
 					<div className="mt-2 text-3xl font-bold tracking-[-0.045em]">{rates.length}</div>
 				</div>
-				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="text-[0.82rem] text-muted">Active</div>
 					<div className="mt-2 text-3xl font-bold tracking-[-0.045em]">{counts.active}</div>
 				</div>
-				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="text-[0.82rem] text-muted">Needs review</div>
 					<div className="mt-2 text-3xl font-bold tracking-[-0.045em]">{counts.review}</div>
 				</div>
-				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="text-[0.82rem] text-muted">Inactive / TBC</div>
 					<div className="mt-2 text-3xl font-bold tracking-[-0.045em]">{counts.inactive}</div>
 				</div>

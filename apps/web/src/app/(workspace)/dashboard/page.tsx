@@ -52,29 +52,29 @@ export default async function DashboardPage() {
 				</Link>
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-2 min-[1100px]:grid-cols-4 mb-5 gap-4">
-				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="text-[0.82rem] text-muted">Customers</div>
 					<div className="mt-2 text-3xl font-bold tracking-[-0.045em]">{customersCount[0]?.count ?? 0}</div>
 					<div className="mt-1 text-xs text-muted">Company contacts and repeat work</div>
 				</div>
-				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="text-[0.82rem] text-muted">Rate catalogue</div>
 					<div className="mt-2 text-3xl font-bold tracking-[-0.045em]">{ratesCount[0]?.count ?? 0}</div>
 					<div className="mt-1 text-xs text-muted">Review flagged prices before use</div>
 				</div>
-				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="text-[0.82rem] text-muted">Enquiries captured</div>
 					<div className="mt-2 text-3xl font-bold tracking-[-0.045em]">{enquiryCount[0]?.count ?? 0}</div>
 					<div className="mt-1 text-xs text-muted">Original customer messages retained</div>
 				</div>
-				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="text-[0.82rem] text-muted">Quotes created</div>
 					<div className="mt-2 text-3xl font-bold tracking-[-0.045em]">{quoteCount[0]?.count ?? 0}</div>
 					<div className="mt-1 text-xs text-muted">Approval is always human-led</div>
 				</div>
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-				<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<div className="mb-3 flex flex-col justify-between gap-4 md:flex-row md:items-start">
 						<div>
 							<h2 className="mb-3.5 text-lg font-semibold tracking-tight">Recent quotes</h2>
@@ -89,16 +89,16 @@ export default async function DashboardPage() {
 							<table className="w-full border-collapse text-sm">
 								<thead>
 									<tr>
-										<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+										<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 											Quote
 										</th>
-										<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+										<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 											Customer
 										</th>
-										<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+										<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 											Status
 										</th>
-										<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+										<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 											Total
 										</th>
 									</tr>
@@ -106,23 +106,23 @@ export default async function DashboardPage() {
 								<tbody>
 									{recentQuotes.map(({ quote, customerName, revision }) => (
 										<tr key={`${quote.id}-${revision?.id}`}>
-											<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+											<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 												<Link href={`/quotes/${quote.id}`}>
 													<strong>{quote.quoteNumber}</strong>
 												</Link>
 												<div className="text-xs text-muted">{quote.createdAt.toLocaleDateString("en-GB")}</div>
 											</td>
-											<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+											<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 												{customerName ?? "Unmatched"}
 											</td>
-											<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+											<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 												<span
-													className={`inline-flex whitespace-nowrap rounded-full bg-[#eef3ef] px-2.5 py-1 text-xs font-bold text-[#40534b] ${quote.status === "approved" ? "bg-[#e0f5e7] text-[#17643f]" : quote.status === "blocked" || quote.status === "site_visit_required" ? "bg-[#ffe7e4] text-[#9b3129]" : "bg-[#fff0d6] text-[#855c0a]"}`}
+													className={`inline-flex whitespace-nowrap rounded-full bg-chip px-2.5 py-1 text-xs font-bold text-chip-text ${quote.status === "approved" ? "bg-success-bg text-success-text" : quote.status === "blocked" || quote.status === "site_visit_required" ? "bg-danger-bg text-danger-text" : "bg-warning-bg text-warning-text"}`}
 												>
 													{quote.status.replaceAll("_", " ")}
 												</span>
 											</td>
-											<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+											<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 												{money(revision?.total)}
 											</td>
 										</tr>
@@ -131,16 +131,16 @@ export default async function DashboardPage() {
 							</table>
 						</div>
 					) : (
-						<div className="rounded-xl border border-[#dce6de] bg-[#f1f5f2] px-3.5 py-3 text-sm leading-relaxed">
+						<div className="rounded-xl border border-line bg-panel px-3.5 py-3 text-sm leading-relaxed">
 							No quotes yet. Start with a customer enquiry and let Quoteblaze prepare a draft.
 						</div>
 					)}
 				</section>
-				<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+				<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 					<h2 className="mb-3.5 text-lg font-semibold tracking-tight">A safe quoting workflow</h2>
 					<div className="grid gap-3">
 						<div className="flex gap-3">
-							<span className="grid size-8.5 shrink-0 place-items-center rounded-[11px] bg-[#a9e3bb] font-black text-[#143f31]">
+							<span className="grid size-8.5 shrink-0 place-items-center rounded-[11px] bg-accent font-black text-ink">
 								1
 							</span>
 							<div>
@@ -151,7 +151,7 @@ export default async function DashboardPage() {
 							</div>
 						</div>
 						<div className="flex gap-3">
-							<span className="grid size-8.5 shrink-0 place-items-center rounded-[11px] bg-[#a9e3bb] font-black text-[#143f31]">
+							<span className="grid size-8.5 shrink-0 place-items-center rounded-[11px] bg-accent font-black text-ink">
 								2
 							</span>
 							<div>
@@ -162,7 +162,7 @@ export default async function DashboardPage() {
 							</div>
 						</div>
 						<div className="flex gap-3">
-							<span className="grid size-8.5 shrink-0 place-items-center rounded-[11px] bg-[#a9e3bb] font-black text-[#143f31]">
+							<span className="grid size-8.5 shrink-0 place-items-center rounded-[11px] bg-accent font-black text-ink">
 								3
 							</span>
 							<div>
@@ -174,20 +174,20 @@ export default async function DashboardPage() {
 						</div>
 					</div>
 					<hr className="my-4.5 border-0 border-t border-line" />
-					<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#f2deb0] bg-[#fff8e9] text-[#754f09]">
+					<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-warning-border bg-warning-bg text-warning-text">
 						<strong>Before quoting:</strong> check the rate catalogue for entries marked “needs review” or “inactive”. Imported
 						prices are not silently trusted.
 					</div>
 					<div className="flex flex-wrap items-center gap-2 mt-3.5">
 						<Link
 							href="/rates"
-							className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-[#f3f6f1]"
+							className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-hover"
 						>
 							Review rates
 						</Link>
 						<Link
 							href="/settings"
-							className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-[#f3f6f1]"
+							className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-hover"
 						>
 							Configure AI
 						</Link>

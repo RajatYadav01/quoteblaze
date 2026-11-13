@@ -72,7 +72,7 @@ export function RateCatalogManager({ initialRates }: { initialRates: Rate[] }) {
 	}
 	return (
 		<div className="grid gap-3">
-			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 				<div className="grid grid-cols-1 md:grid-cols-2">
 					<div>
 						<h2 className="mb-3.5 text-lg font-semibold tracking-tight">Import a CSV</h2>
@@ -81,7 +81,7 @@ export function RateCatalogManager({ initialRates }: { initialRates: Rate[] }) {
 							overwritten.
 						</p>
 						<label
-							className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-[#f3f6f1]"
+							className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-hover"
 							htmlFor="rates-csv"
 						>
 							{uploading ? "Importing…" : "Choose CSV file"}
@@ -95,7 +95,7 @@ export function RateCatalogManager({ initialRates }: { initialRates: Rate[] }) {
 							onChange={upload}
 						/>
 					</div>
-					<div className="rounded-xl border border-[#dce6de] bg-[#f1f5f2] px-3.5 py-3 text-sm leading-relaxed">
+					<div className="rounded-xl border border-line bg-panel px-3.5 py-3 text-sm leading-relaxed">
 						<strong>Review before use</strong>
 						<div className="text-xs mt-1.25">
 							Examples include old prices, duplicate materials, unclear VAT treatment, and rates marked TBC. Only active rates
@@ -105,7 +105,7 @@ export function RateCatalogManager({ initialRates }: { initialRates: Rate[] }) {
 				</div>
 				{message && (
 					<div
-						className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#c6e7cf] bg-[#eaf7ed] text-[#245a39] mt-3.5"
+						className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-success-border bg-success-bg text-success-text mt-3.5"
 						role="status"
 					>
 						{message}
@@ -113,24 +113,24 @@ export function RateCatalogManager({ initialRates }: { initialRates: Rate[] }) {
 				)}
 				{error && (
 					<div
-						className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#f0c9c1] bg-[#fff1ee] text-[#8d2e23] mt-3.5"
+						className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-danger-border bg-danger-bg text-danger-text mt-3.5"
 						role="alert"
 					>
 						{error}
 					</div>
 				)}
 			</section>
-			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 				<div className="flex flex-wrap items-center justify-between gap-2 mb-3.5">
 					<input
-						className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 max-w-95"
+						className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 max-w-95"
 						aria-label="Search rates"
 						placeholder="Search code or description…"
 						value={query}
 						onChange={(e) => setQuery(e.target.value)}
 					/>
 					<select
-						className="block rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 w-47.5"
+						className="block rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 w-47.5"
 						aria-label="Filter rate status"
 						value={status}
 						onChange={(e) => setStatus(e.target.value)}
@@ -145,19 +145,19 @@ export function RateCatalogManager({ initialRates }: { initialRates: Rate[] }) {
 					<table className="w-full border-collapse text-sm">
 						<thead>
 							<tr>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Code / description
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Unit rate
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Status
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Tax
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Review
 								</th>
 							</tr>
@@ -170,7 +170,7 @@ export function RateCatalogManager({ initialRates }: { initialRates: Rate[] }) {
 					</table>
 				</div>
 				{filtered.length === 0 && (
-					<div className="rounded-xl border border-[#dce6de] bg-[#f1f5f2] px-3.5 py-3 text-sm leading-relaxed mt-3">
+					<div className="rounded-xl border border-line bg-panel px-3.5 py-3 text-sm leading-relaxed mt-3">
 						No rates match this filter.
 					</div>
 				)}
@@ -186,15 +186,15 @@ function RateRow({ rate, onSave }: { rate: Rate; onSave: (rate: Rate, status: st
 	const [saving, setSaving] = useState(false);
 	return (
 		<tr>
-			<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+			<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 				<strong>{rate.code}</strong>
 				<div>{rate.description}</div>
 				<div className="text-xs text-muted">Unit: {rate.unit}</div>
 				{rate.sourceNotes && <div className="text-xs text-muted">Source note: {rate.sourceNotes}</div>}
 			</td>
-			<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+			<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 				<input
-					className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-26.25"
+					className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-w-26.25"
 					type="number"
 					min="0"
 					step="0.01"
@@ -204,9 +204,9 @@ function RateRow({ rate, onSave }: { rate: Rate; onSave: (rate: Rate, status: st
 					placeholder="TBC"
 				/>
 			</td>
-			<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+			<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 				<select
-					className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-33.75"
+					className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-w-33.75"
 					aria-label={`${rate.code} status`}
 					value={nextStatus}
 					onChange={(e) => setNextStatus(e.target.value)}
@@ -216,9 +216,9 @@ function RateRow({ rate, onSave }: { rate: Rate; onSave: (rate: Rate, status: st
 					<option value="inactive">Inactive</option>
 				</select>
 			</td>
-			<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+			<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 				<select
-					className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-33.75"
+					className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-w-33.75"
 					aria-label={`${rate.code} tax treatment`}
 					value={tax}
 					onChange={(e) => setTax(e.target.value)}
@@ -228,9 +228,9 @@ function RateRow({ rate, onSave }: { rate: Rate; onSave: (rate: Rate, status: st
 					<option value="unknown">Unknown</option>
 				</select>
 			</td>
-			<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+			<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 				<button
-					className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-[#f3f6f1]"
+					className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-hover"
 					type="button"
 					disabled={saving || (nextStatus === rate.status && tax === rate.taxTreatment && rateValue === (rate.rate ?? ""))}
 					onClick={async () => {

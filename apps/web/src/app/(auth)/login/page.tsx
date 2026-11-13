@@ -34,19 +34,17 @@ export default function LoginPage() {
 		}
 	}
 	return (
-		<main className="grid min-h-screen grid-cols-1 bg-[#17382f] md:grid-cols-[1.1fr_1fr]">
-			<section className="flex flex-col justify-between bg-[radial-gradient(ellipse_at_top_left,#2a6553,transparent_60%),#17382f] p-6 text-[#eff8f0] md:p-[8vw]">
+		<main className="grid min-h-screen grid-cols-1 bg-sidebar md:grid-cols-[1.1fr_1fr]">
+			<section className="flex flex-col justify-between bg-[radial-gradient(ellipse_at_top_left,#6b3928,transparent_60%),var(--color-sidebar)] p-6 text-sidebar-foreground md:p-[8vw]">
 				<div className="flex items-center gap-2.5 text-xl font-extrabold tracking-[-0.04em]">
-					<span className="grid size-8.5 shrink-0 place-items-center rounded-[11px] bg-[#a9e3bb] font-black text-[#143f31]">
-						Q
-					</span>
+					<span className="grid size-8.5 shrink-0 place-items-center rounded-[11px] bg-accent font-black text-ink">Q</span>
 					<span>Quoteblaze</span>
 				</div>
 				<div>
 					<h1 className="mt-10 mb-5 max-w-162.5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">
 						Get the quote out. Keep the human in charge.
 					</h1>
-					<p className="mb-0 max-w-125 leading-relaxed text-[#c5dacf]">
+					<p className="mb-0 max-w-125 leading-relaxed text-sidebar-muted">
 						Turn customer enquiries into clear, itemised draft quotes using your own price list. Every quote stays under your
 						team's control.
 					</p>
@@ -59,7 +57,7 @@ export default function LoginPage() {
 					<p className="mb-7 max-w-175 leading-relaxed text-muted">Sign in to your company workspace.</p>
 					{error && (
 						<div
-							className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#f0c9c1] bg-[#fff1ee] text-[#8d2e23] mb-4"
+							className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-danger-border bg-danger-bg text-danger-text mb-4"
 							role="alert"
 						>
 							{error}
@@ -67,12 +65,12 @@ export default function LoginPage() {
 					)}
 					<div className="mb-4">
 						<label className="mb-1.5 block text-sm font-semibold" htmlFor="email">
-							Email Address
+							Email address
 						</label>
 						<input
 							id="email"
 							autoComplete="username"
-							className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+							className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 							type="email"
 							required
 							value={email}
@@ -87,7 +85,7 @@ export default function LoginPage() {
 							id="password"
 							visibilityLabel="password"
 							autoComplete="current-password"
-							className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+							className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 							required
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}

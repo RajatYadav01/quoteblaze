@@ -156,11 +156,11 @@ export function QuoteReview({
 				<div>
 					<div className="flex flex-wrap items-center gap-2">
 						<span
-							className={`inline-flex whitespace-nowrap rounded-full bg-[#eef3ef] px-2.5 py-1 text-xs font-bold text-[#40534b] ${quote.status === "approved" ? "bg-[#e0f5e7] text-[#17643f]" : isBlocked ? "bg-[#ffe7e4] text-[#9b3129]" : "bg-[#fff0d6] text-[#855c0a]"}`}
+							className={`inline-flex whitespace-nowrap rounded-full bg-chip px-2.5 py-1 text-xs font-bold text-chip-text ${quote.status === "approved" ? "bg-success-bg text-success-text" : isBlocked ? "bg-danger-bg text-danger-text" : "bg-warning-bg text-warning-text"}`}
 						>
 							{quote.status.replaceAll("_", " ")}
 						</span>
-						<span className="inline-flex whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-bold bg-[#edf0ef] text-[#4f5c58]">
+						<span className="inline-flex whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-bold bg-neutral-chip text-neutral-chip-text">
 							Revision {revision.revision}
 						</span>
 					</div>
@@ -172,7 +172,7 @@ export function QuoteReview({
 				</div>
 				<div className="flex flex-wrap items-center gap-2">
 					<button
-						className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-[#f3f6f1]"
+						className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-hover"
 						type="button"
 						onClick={() => router.push("/quotes")}
 					>
@@ -192,7 +192,7 @@ export function QuoteReview({
 			</div>
 			{message && (
 				<div
-					className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#c6e7cf] bg-[#eaf7ed] text-[#245a39]"
+					className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-success-border bg-success-bg text-success-text"
 					role="status"
 				>
 					{message}
@@ -200,25 +200,25 @@ export function QuoteReview({
 			)}
 			{error && (
 				<div
-					className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#f0c9c1] bg-[#fff1ee] text-[#8d2e23]"
+					className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-danger-border bg-danger-bg text-danger-text"
 					role="alert"
 				>
 					{error}
 				</div>
 			)}
 			{quote.status === "approved" && (
-				<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#c6e7cf] bg-[#eaf7ed] text-[#245a39]">
+				<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-success-border bg-success-bg text-success-text">
 					<strong>Approved internally.</strong> No email was sent. A future edit must create a new revision and requires new
 					approval.
 				</div>
 			)}
 			{quote.status === "site_visit_required" && (
-				<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#f0c9c1] bg-[#fff1ee] text-[#8d2e23]">
+				<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-danger-border bg-danger-bg text-danger-text">
 					<strong>Site visit required.</strong> This enquiry cannot be turned into a priced quote from email alone.
 				</div>
 			)}
 			{revision.blockingReasons?.length > 0 && (
-				<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#f0c9c1] bg-[#fff1ee] text-[#8d2e23]">
+				<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-danger-border bg-danger-bg text-danger-text">
 					<strong>Issues to resolve before approval</strong>
 					<ul className="list-disc space-y-1 pl-5">
 						{revision.blockingReasons.map((b) => (
@@ -230,7 +230,7 @@ export function QuoteReview({
 			{(resolvableBlockers.filter((reason) => revision.blockingReasons.includes(reason)).length > 0 ||
 				items.some((item) => item.excluded)) &&
 				quote.status !== "site_visit_required" && (
-					<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+					<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 						<h2 className="mb-3.5 text-lg font-semibold tracking-tight">Human resolution of information requests</h2>
 						<p className="leading-relaxed text-xs text-muted">
 							Only information requests can be resolved here, and only after you have actually checked the details.
@@ -260,7 +260,7 @@ export function QuoteReview({
 									Explain what was confirmed or explicitly excluded *
 								</label>
 								<textarea
-									className="block w-full resize-y rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 leading-relaxed text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-h-22.5"
+									className="block w-full resize-y rounded-xl border border-input-border bg-white px-3 py-2.5 leading-relaxed text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-h-22.5"
 									id="resolution-note"
 									minLength={10}
 									value={resolutionNote}
@@ -271,7 +271,7 @@ export function QuoteReview({
 						)}
 					</section>
 				)}
-			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 				<h2 className="mb-3.5 text-lg font-semibold tracking-tight">Itemised scope and pricing</h2>
 				<p className="leading-relaxed text-xs text-muted">
 					Change quantity, unit, selected rate, description, or unit price if confirmed by a human. Rate-code changes must use an
@@ -281,25 +281,25 @@ export function QuoteReview({
 					<table className="w-full border-collapse text-sm">
 						<thead>
 							<tr>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Exclude
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Rate code
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Work item
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Quantity
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Unit
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Unit rate
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Line total
 								</th>
 							</tr>
@@ -307,7 +307,7 @@ export function QuoteReview({
 						<tbody>
 							{items.map((item, index) => (
 								<tr className={item.excluded ? "opacity-60" : ""} key={`${item.rateCode ?? "unpriced"}-${item.rateId}`}>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										<label>
 											<input
 												type="checkbox"
@@ -322,9 +322,9 @@ export function QuoteReview({
 											<span className="text-xs">Exclude</span>
 										</label>
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										<input
-											className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-22.5"
+											className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-w-22.5"
 											aria-label={`Rate code ${index + 1}`}
 											disabled={Boolean(item.excluded)}
 											value={item.rateCode ?? ""}
@@ -332,9 +332,9 @@ export function QuoteReview({
 											placeholder="Rate code"
 										/>
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										<input
-											className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-47.5"
+											className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-w-47.5"
 											aria-label={`Description ${index + 1}`}
 											disabled={Boolean(item.excluded)}
 											value={item.description}
@@ -349,16 +349,18 @@ export function QuoteReview({
 														: "VAT treatment unresolved"}
 											</div>
 										)}
-										{item.blockingReason && <div className="text-xs text-[#9b3129] mt-1.25">{item.blockingReason}</div>}
+										{item.blockingReason && (
+											<div className="text-xs text-danger-text mt-1.25">{item.blockingReason}</div>
+										)}
 										{item.excluded && (
 											<div className="text-xs text-muted">
 												Excluded from priced scope; this decision will be recorded in assumptions.
 											</div>
 										)}
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										<input
-											className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-22.5"
+											className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-w-22.5"
 											type="number"
 											min="0.001"
 											step="0.001"
@@ -368,21 +370,21 @@ export function QuoteReview({
 											onChange={(e) => patchItem(index, "quantity", e.target.value)}
 										/>
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										<input
-											className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-21.25"
+											className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-w-21.25"
 											aria-label={`Unit ${index + 1}`}
 											disabled={Boolean(item.excluded)}
 											value={item.unit ?? ""}
 											onChange={(e) => patchItem(index, "unit", e.target.value)}
 										/>
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										{item.excluded ? (
 											"Excluded"
 										) : (
 											<input
-												className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-w-26.25"
+												className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-w-26.25"
 												type="number"
 												min="0"
 												step="0.01"
@@ -405,7 +407,7 @@ export function QuoteReview({
 											/>
 										)}
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										{item.excluded ? "—" : money(item.manualUnitRate ?? item.unitRate)}
 									</td>
 								</tr>
@@ -413,14 +415,14 @@ export function QuoteReview({
 						</tbody>
 					</table>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 mt-5">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
 					<div className="mb-4">
 						<label className="mb-1.5 block text-sm font-semibold" htmlFor="quote-notes">
 							Quote summary / notes
 						</label>
 						<textarea
 							id="quote-notes"
-							className="block w-full resize-y rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 leading-relaxed text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-h-25"
+							className="block w-full resize-y rounded-xl border border-input-border bg-white px-3 py-2.5 leading-relaxed text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-h-25"
 							value={notes}
 							onChange={(e) => setNotes(e.target.value)}
 						/>
@@ -431,7 +433,7 @@ export function QuoteReview({
 						</label>
 						<textarea
 							id="quote-assumptions"
-							className="block w-full resize-y rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 leading-relaxed text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-h-25"
+							className="block w-full resize-y rounded-xl border border-input-border bg-white px-3 py-2.5 leading-relaxed text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-h-25"
 							value={assumptions}
 							onChange={(e) => setAssumptions(e.target.value)}
 						/>
@@ -442,7 +444,7 @@ export function QuoteReview({
 						Reason for manual change (if applicable)
 					</label>
 					<input
-						className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+						className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 						id="override-reason"
 						value={overrideReason}
 						onChange={(e) => setOverrideReason(e.target.value)}
@@ -458,11 +460,11 @@ export function QuoteReview({
 					{busy ? "Saving…" : "Save as new revision"}
 				</button>
 			</section>
-			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)] max-w-137.5 w-full">
+			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)] max-w-137.5 w-full">
 				<h2 className="mb-3.5 text-lg font-semibold tracking-tight">Quote totals</h2>
 				<div className="grid gap-3">
 					{revision.pricingSnapshot?.minimumChargeApplied === true && (
-						<div className="rounded-xl border border-[#dce6de] bg-[#f1f5f2] px-3.5 py-3 text-sm leading-relaxed">
+						<div className="rounded-xl border border-line bg-panel px-3.5 py-3 text-sm leading-relaxed">
 							Minimum job charge applied: subtotal raised to the configured minimum of{" "}
 							{money(Number(revision.pricingSnapshot.minimumCharge))} ex VAT. This is a pricing adjustment, not a separate
 							line item.

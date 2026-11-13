@@ -58,10 +58,10 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 	}
 	return (
 		<div className="grid gap-3">
-			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 				<div className="flex flex-wrap items-center justify-between gap-2">
 					<input
-						className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 max-w-112.5"
+						className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 max-w-112.5"
 						aria-label="Search customers"
 						placeholder="Search name, company, email, phone…"
 						value={query}
@@ -84,7 +84,7 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 								</label>
 								<input
 									id="customer-name"
-									className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+									className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 									required
 									value={name}
 									onChange={(e) => setName(e.target.value)}
@@ -96,7 +96,7 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 								</label>
 								<input
 									id="customer-business"
-									className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+									className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 									value={businessName}
 									onChange={(e) => setBusinessName(e.target.value)}
 								/>
@@ -107,7 +107,7 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 								</label>
 								<input
 									id="customer-email"
-									className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+									className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 									type="email"
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
@@ -119,7 +119,7 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 								</label>
 								<input
 									id="customer-phone"
-									className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+									className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 									value={phone}
 									onChange={(e) => setPhone(e.target.value)}
 								/>
@@ -131,7 +131,7 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 							</label>
 							<input
 								id="customer-address"
-								className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+								className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 								value={address}
 								onChange={(e) => setAddress(e.target.value)}
 							/>
@@ -142,13 +142,13 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 							</label>
 							<textarea
 								id="customer-notes"
-								className="block w-full resize-y rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 leading-relaxed text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15 min-h-20"
+								className="block w-full resize-y rounded-xl border border-input-border bg-white px-3 py-2.5 leading-relaxed text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15 min-h-20"
 								value={notes}
 								onChange={(e) => setNotes(e.target.value)}
 							/>
 						</div>
 						{error && (
-							<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#f0c9c1] bg-[#fff1ee] text-[#8d2e23]">
+							<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-danger-border bg-danger-bg text-danger-text">
 								{error}
 							</div>
 						)}
@@ -162,7 +162,7 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 					</form>
 				)}
 			</section>
-			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 				<div className="flex flex-wrap items-center justify-between gap-2 mb-3.5">
 					<h2 className="m-0 text-lg font-semibold tracking-tight">Customer directory</h2>
 					<span className="text-xs text-muted">{filtered.length} records</span>
@@ -171,16 +171,16 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 					<table className="w-full border-collapse text-sm">
 						<thead>
 							<tr>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Name
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Company
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Contact
 								</th>
-								<th className="border-b border-[#ebefea] bg-[#f9faf7] px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
+								<th className="border-b border-row-border bg-table-head px-3.5 py-3 text-left align-top text-xs font-bold uppercase tracking-wider text-muted">
 									Address / notes
 								</th>
 							</tr>
@@ -188,20 +188,20 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 						<tbody>
 							{filtered.map((c) => (
 								<tr key={c.id}>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										<strong>{c.name}</strong>
 										{c.duplicateGroup && (
 											<div className="text-xs text-muted">Possible duplicate group: {c.duplicateGroup}</div>
 										)}
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										{c.businessName ?? "—"}
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										{c.email && <div>{c.email}</div>}
 										{c.phone && <div className="text-muted text-xs">{c.phone}</div>}
 									</td>
-									<td className="border-b border-[#ebefea] px-3.5 py-3 align-top last:border-b-0">
+									<td className="border-b border-row-border px-3.5 py-3 align-top last:border-b-0">
 										{c.address ?? "—"}
 										{c.notes && <div className="text-xs text-muted max-w-xs mt-1">{c.notes}</div>}
 									</td>
@@ -211,7 +211,7 @@ export function CustomerDirectory({ initialCustomers }: { initialCustomers: Cust
 					</table>
 				</div>
 				{filtered.length === 0 && (
-					<div className="rounded-xl border border-[#dce6de] bg-[#f1f5f2] px-3.5 py-3 text-sm leading-relaxed mt-3">
+					<div className="rounded-xl border border-line bg-panel px-3.5 py-3 text-sm leading-relaxed mt-3">
 						No matching customers.
 					</div>
 				)}

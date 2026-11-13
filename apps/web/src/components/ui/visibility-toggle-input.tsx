@@ -20,7 +20,7 @@ export function VisibilityToggleInput({ visibilityLabel, className = "", id, ...
 				aria-controls={id}
 				title={actionLabel}
 				onClick={() => setVisible((current) => !current)}
-				className="absolute right-2 top-1/2 grid size-9 -translate-y-1/2 place-items-center rounded-lg text-muted transition-colors hover:bg-[#f3f6f1] hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/40 focus-visible:ring-offset-1"
+				className="absolute right-2 top-1/2 grid size-9 -translate-y-1/2 place-items-center rounded-lg text-muted transition-colors hover:bg-hover hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-1"
 			>
 				{visible ? (
 					<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" className="size-5">

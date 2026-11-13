@@ -156,21 +156,21 @@ export function SettingsManager() {
 
 	if (loading)
 		return (
-			<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+			<div className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 				Loading settings…
 			</div>
 		);
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 items-start gap-4">
-            {(message || error) && (
+			{(message || error) && (
 				<div
-					className={`rounded-xl border border-[#dce6de] bg-[#f1f5f2] px-3.5 py-3 text-sm leading-relaxed ${error ? "border-[#f0c9c1] bg-[#fff1ee] text-[#8d2e23]" : "border-[#c6e7cf] bg-[#eaf7ed] text-[#245a39]"} col-span-full`}
+					className={`rounded-xl border border-line bg-panel px-3.5 py-3 text-sm leading-relaxed ${error ? "border-danger-border bg-danger-bg text-danger-text" : "border-success-border bg-success-bg text-success-text"} col-span-full`}
 					role="status"
 				>
 					{error || message}
 				</div>
 			)}
-			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 				<h2 className="mb-3.5 text-lg font-semibold tracking-tight">Company quoting rules</h2>
 				<p className="leading-relaxed text-muted text-xs">
 					These values are used by the deterministic pricing engine. They are not AI suggestions.
@@ -181,7 +181,7 @@ export function SettingsManager() {
 							VAT rate (%)
 						</label>
 						<input
-							className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+							className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 							id="vat-rate"
 							type="number"
 							min="0"
@@ -197,7 +197,7 @@ export function SettingsManager() {
 							Minimum job charge (£, ex VAT)
 						</label>
 						<input
-							className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+							className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 							id="min-charge"
 							type="number"
 							min="0"
@@ -212,7 +212,7 @@ export function SettingsManager() {
 							Quote validity (days)
 						</label>
 						<input
-							className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+							className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 							id="validity"
 							type="number"
 							min="1"
@@ -227,7 +227,7 @@ export function SettingsManager() {
 							Site-visit threshold (m²)
 						</label>
 						<input
-							className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+							className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 							id="threshold"
 							type="number"
 							min="1"
@@ -249,11 +249,11 @@ export function SettingsManager() {
 					</button>
 				</form>
 			</section>
-			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(31,60,48,0.035)]">
+			<section className="min-w-0 rounded-2xl border border-line bg-white p-5 shadow-[0_5px_18px_rgba(39,35,31,0.045)]">
 				<div className="flex flex-wrap items-center justify-between gap-2">
 					<h2 className="m-0 text-lg font-semibold tracking-tight">AI configuration</h2>
 					<span
-						className={`inline-flex whitespace-nowrap rounded-full bg-[#eef3ef] px-2.5 py-1 text-xs font-bold text-[#40534b] ${ai?.configured ? "bg-[#e0f5e7] text-[#17643f]" : "bg-[#fff0d6] text-[#855c0a]"}`}
+						className={`inline-flex whitespace-nowrap rounded-full bg-chip px-2.5 py-1 text-xs font-bold text-chip-text ${ai?.configured ? "bg-success-bg text-success-text" : "bg-warning-bg text-warning-text"}`}
 					>
 						{ai?.configured ? "Configured" : "Key required"}
 					</span>
@@ -263,7 +263,7 @@ export function SettingsManager() {
 					after saving.
 				</p>
 				{ai?.configured && (
-					<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#c6e7cf] bg-[#eaf7ed] text-[#245a39] mb-4">
+					<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-success-border bg-success-bg text-success-text mb-4">
 						Saved key: ••••••••••••••••
 						<br />
 						Selected model: {ai.model}
@@ -279,7 +279,7 @@ export function SettingsManager() {
 							OpenRouter API key
 						</label>
 						<VisibilityToggleInput
-							className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+							className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 							id="openrouter-key"
 							visibilityLabel="OpenRouter API key"
 							autoComplete="new-password"
@@ -297,7 +297,7 @@ export function SettingsManager() {
 							OpenRouter model ID
 						</label>
 						<input
-							className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+							className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 							id="model"
 							name="model"
 							autoComplete="off"
@@ -326,7 +326,7 @@ export function SettingsManager() {
 									Search catalogue
 								</label>
 								<input
-									className="block w-full rounded-xl border border-[#d1dcd3] bg-white px-3 py-2.5 text-ink outline-none focus:border-[#419778] focus:ring-4 focus:ring-emerald-700/15"
+									className="block w-full rounded-xl border border-input-border bg-white px-3 py-2.5 text-ink outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
 									id="model-search"
 									value={modelSearch}
 									onChange={(e) => setModelSearch(e.target.value)}
@@ -340,7 +340,7 @@ export function SettingsManager() {
 								/>
 							</div>
 							<button
-								className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-transparent px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-[#f3f6f1]"
+								className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-hover"
 								type="button"
 								disabled={searchingModels}
 								onClick={() => void browseModels()}
@@ -367,7 +367,7 @@ export function SettingsManager() {
 											</div>
 										</div>
 										<button
-											className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-transparent px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-[#f3f6f1]"
+											className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-line bg-white text-ink hover:bg-hover"
 											type="button"
 											onClick={() => setModel(entry.id)}
 											aria-label={`Use ${entry.id}`}
@@ -389,7 +389,7 @@ export function SettingsManager() {
 						</button>
 						{ai?.configured && (
 							<button
-								className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-[#f1c9c2] bg-[#fff2ef] text-[#9c3225]"
+								className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 border-danger-border bg-danger-bg text-danger-text"
 								type="button"
 								disabled={saving}
 								onClick={deleteAi}
@@ -400,7 +400,7 @@ export function SettingsManager() {
 					</div>
 				</form>
 				<hr className="my-4.5 border-0 border-t border-line" />
-				<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-[#f2deb0] bg-[#fff8e9] text-[#754f09]">
+				<div className="rounded-xl border px-3.5 py-3 text-sm leading-relaxed border-warning-border bg-warning-bg text-warning-text">
 					Customer enquiry text is sent to the selected model through OpenRouter for analysis. Check your provider's data-handling
 					and retention terms before sending customer information.
 				</div>

@@ -1,10 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #1d2b2a;
-  --color-muted: #647370;
-  --color-paper: #f6f7f3;
-  --color-line: #dfe5de;
-  --color-brand: #176b55;
-  --color-brand-dark: #0d4a3b;
+    /* Core brand palette */
+    --color-ink: #27231f;
+    --color-muted: #766d65;
+    --color-paper: #fbf8f4;
+    --color-line: #e8ded5;
+    --color-brand: #a64b2a;
+    --color-brand-dark: #82391f;
+    --color-accent: #d89a3d;
+
+    /* Surfaces, controls and data tables */
+    --color-panel: #f6efe9;
+    --color-table-head: #f7f1eb;
+    --color-row-border: #ede5de;
+    --color-input-border: #ddcfc4;
+    --color-hover: #f6ece5;
+    --color-chip: #f2e8e1;
+    --color-chip-text: #6a4a3a;
+    --color-neutral-chip: #f0eae5;
+    --color-neutral-chip-text: #5a514b;
+
+    /* Dark navigation and authentication panels */
+    --color-sidebar: #27231f;
+    --color-sidebar-active: #593124;
+    --color-sidebar-border: #725042;
+    --color-sidebar-foreground: #fbf8f4;
+    --color-sidebar-muted: #e0c3b4;
+
+    /* Semantic states. Success uses blue rather than a green brand accent. */
+    --color-success-bg: #ecfdf3;
+    --color-success-border: #abefc6;
+    --color-success-text: #067647;
+    --color-warning-bg: #fff8e9;
+    --color-warning-border: #f2deb0;
+    --color-warning-text: #754f09;
+    --color-danger-bg: #fff1ee;
+    --color-danger-border: #f0c9c1;
+    --color-danger-text: #8d2e23;
 }
