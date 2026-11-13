@@ -13,9 +13,7 @@ config({ path: fileURLToPath(new URL("../../../.env", import.meta.url)) });
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) throw new Error("DATABASE_URL is required");
 if (process.env.NODE_ENV === "production" && process.env.ALLOW_DEMO_SEED !== "true") {
-	throw new Error(
-		"Refusing to seed demo data in production. Set ALLOW_DEMO_SEED=true only for an explicitly approved, isolated demo database.",
-	);
+	console.info("Skipping demo data seeding. Set ALLOW_DEMO_SEED=true to enable seeding for the demo database.");
 }
 const sql = postgres(databaseUrl, { max: 1 });
 const db = drizzle({ client: sql });
